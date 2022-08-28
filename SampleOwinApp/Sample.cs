@@ -78,7 +78,7 @@ namespace SampleOwinApp
             else
             {
                 //app.UseCors(CorsOptions.AllowAll);
-                app.MapSignalR(); // replaced by the above
+                //app.MapSignalR(); // replaced by the above
             }
             app.Map("/echo", a => a.Run(c =>
             {

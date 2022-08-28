@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinSample", "NowinSample\NowinSample.csproj", "{59409616-C3C9-4962-B965-2F8E107E51BA}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinAcmeSample", "NowinAcmeSample\NowinAcmeSample.csproj", "{39CECD4E-F976-4FB0-8E07-ED9C9A00B647}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KestrelTest", "KestrelTest\KestrelTest.csproj", "{E0FB0135-C123-4BF1-94DB-551C0380883C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.StaticFiles", "Microsoft.Owin.StaticFiles\Microsoft.Owin.StaticFiles.csproj", "{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.StaticFiles.Tests", "Microsoft.Owin.StaticFiles.Tests\Microsoft.Owin.StaticFiles.Tests.csproj", "{473F6EEE-455F-4553-953D-5D0736D62D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,8 +61,19 @@ Global
 		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473F6EEE-455F-4553-953D-5D0736D62D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473F6EEE-455F-4553-953D-5D0736D62D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473F6EEE-455F-4553-953D-5D0736D62D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473F6EEE-455F-4553-953D-5D0736D62D11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCB3EA92-C5C7-4A88-884E-DB0671E19E75}
 	EndGlobalSection
 EndGlobal
