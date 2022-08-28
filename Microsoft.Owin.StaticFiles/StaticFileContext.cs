@@ -326,10 +326,6 @@ namespace Microsoft.Owin.StaticFiles
             Stream readStream = _fileInfo.CreateReadStream();
             var copyOperation = new StreamCopyOperation(readStream, _response.Body, _length, _request.CallCancelled);
 
-            if (physicalPath.ToLower().EndsWith(".mp4"))
-            {
-                Console.WriteLine("Begin send mp4 ==>" + physicalPath);
-            }
             Task task = copyOperation.Start();
             task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
             return task;
@@ -362,7 +358,14 @@ namespace Microsoft.Owin.StaticFiles
             _response.ContentLength = length;
             ApplyResponseHeaders(Constants.Status206PartialContent);
 
+
             string physicalPath = _fileInfo.PhysicalPath;
+            if (physicalPath.ToLower().EndsWith(".mp4"))
+            {
+                Console.WriteLine("Begin send mp4 ==>" + physicalPath);
+                //physicalPath = _fileInfo.PhysicalPath.Replace(".mp4", "1.mp4");
+            }
+
             SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
             if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
             {
