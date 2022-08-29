@@ -70,13 +70,13 @@ namespace Microsoft.Owin.StaticFiles
                     case StaticFileContext.PreconditionState.ShouldProcess:
                         if (fileContext.IsHeadMethod)
                         {
-                            return fileContext.SendStatusAsync(Constants.Status200Ok);
+                            return fileContext.SendStatusAsync(Constants.Status200Ok);//request非range
                         }
                         if (fileContext.IsRangeRequest)
                         {
-                            return fileContext.SendRangeAsync();
+                            return fileContext.SendRangeAsync();//异步发送文件内容
                         }
-                        return fileContext.SendAsync();
+                        return fileContext.SendAsync();//都不是，则同步发送
 
                     case StaticFileContext.PreconditionState.NotModified:
                         return fileContext.SendStatusAsync(Constants.Status304NotModified);
