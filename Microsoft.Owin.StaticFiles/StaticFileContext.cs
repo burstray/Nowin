@@ -324,7 +324,8 @@ namespace Microsoft.Owin.StaticFiles
             }
 
             Stream readStream = _fileInfo.CreateReadStream();
-            var copyOperation = new StreamCopyOperation(readStream, _response.Body, _length, _request.CallCancelled);
+            var copyOperation = new StreamCopyOperation(readStream, _response.Body, _length, _request.CallCancelled,_fileInfo.PhysicalPath);
+            //copyOperation.targetFilePath = physicalPath;//20220830
 
             Task task = copyOperation.Start();
             task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
@@ -373,8 +374,11 @@ namespace Microsoft.Owin.StaticFiles
             }
 
             Stream readStream = _fileInfo.CreateReadStream();
+
             readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
-            var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
+            var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled,_fileInfo.PhysicalPath);
+            //copyOperation.targetFilePath = physicalPath;//20220830
+
             Task task = copyOperation.Start();
             task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
             return task;

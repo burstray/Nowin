@@ -145,7 +145,7 @@ namespace Nowin
         {
             get
             {
-                if (_bufferSize < 1024) _bufferSize = 8192;
+                if (_bufferSize < 1024) _bufferSize = 4096;
                 return _bufferSize;
             }
         }

@@ -88,12 +88,40 @@ namespace Microsoft.Owin.StaticFiles
                     throw new ArgumentOutOfRangeException("length", length, string.Empty);
                 }
 
-                Stream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 64,
-                    FileOptions.Asynchronous | FileOptions.SequentialScan);
+
+                //if (fileName.ToLower().EndsWith(".mp4"))
+                //{
+                //    Stream direct_fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 4,
+                //    FileOptions.Asynchronous | FileOptions.SequentialScan);
+                //    Stream fileStream = null;
+
+                //    SharpAESCrypt.SharpAESCrypt.Decrypt("cnRayXia2283_689_PY7", direct_fileStream, fileStream);//20220830a
+                //    try
+                //    {
+                //        fileStream.Seek(offset, SeekOrigin.Begin);
+                //        var copyOperation = new StreamCopyOperation(fileStream, _output, length, cancel);
+                //        copyOperation.targetFilePath = fileName;//20220830
+                //        return copyOperation.Start()
+                //            .ContinueWith(resultTask =>
+                //            {
+                //                fileStream.Close();
+                //                resultTask.Wait(); // Throw exceptions, etc.
+                //            }, TaskContinuationOptions.ExecuteSynchronously);
+                //    }
+                //    catch (Exception)
+                //    {
+                //        fileStream.Close();
+                //        throw;
+                //    }
+                //}
+
+                Stream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 4,
+                FileOptions.Asynchronous | FileOptions.SequentialScan);
                 try
                 {
                     fileStream.Seek(offset, SeekOrigin.Begin);
-                    var copyOperation = new StreamCopyOperation(fileStream, _output, length, cancel);
+                    var copyOperation = new StreamCopyOperation(fileStream, _output, length, cancel, fileName);
+                    //copyOperation.targetFilePath = fileName;//20220830
                     return copyOperation.Start()
                         .ContinueWith(resultTask =>
                         {
