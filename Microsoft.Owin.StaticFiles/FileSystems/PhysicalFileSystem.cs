@@ -64,7 +64,7 @@ namespace Microsoft.Owin.FileSystems
             if (!fullRoot.EndsWith(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal))
             {
                 // When we do matches in GetFullPath, we want to only match full directory names.
-                fullRoot += Path.DirectorySeparatorChar;
+                fullRoot += Path.DirectorySeparatorChar; 
             }
             return fullRoot;
         }
@@ -209,7 +209,8 @@ namespace Microsoft.Owin.FileSystems
             public Stream CreateReadStream()
             {
                 // Note: Buffer size must be greater than zero, even if the file size is zero.
-                return new FileStream(PhysicalPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 64, FileOptions.Asynchronous | FileOptions.SequentialScan);
+                return new FileStream(PhysicalPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 64,
+                    FileOptions.Asynchronous | FileOptions.SequentialScan);
             }
         }
 

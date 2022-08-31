@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinSample", "NowinSample\NowinSample.csproj", "{59409616-C3C9-4962-B965-2F8E107E51BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleOwinApp", "SampleOwinApp\SampleOwinApp.csproj", "{5897FAEE-8B03-405A-9661-099CBFB2A162}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nowin", "Nowin\Nowin.csproj", "{EFF3B76F-E9E4-4DA6-B46D-E2DEA456545E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinTests", "NowinTests\NowinTests.csproj", "{84E1BFBD-2EB0-44C8-A7F7-54E4AB152C13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinHostingSample", "OwinHostingSample\OwinHostingSample.csproj", "{F94CD73D-F902-4A36-BF6E-DF9233D60397}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinAcme", "NowinAcme\NowinAcme.csproj", "{8EDEC294-9E0B-4E51-88B7-98C1FA4E00E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowinAcmeSample", "NowinAcmeSample\NowinAcmeSample.csproj", "{39CECD4E-F976-4FB0-8E07-ED9C9A00B647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KestrelTest", "KestrelTest\KestrelTest.csproj", "{E0FB0135-C123-4BF1-94DB-551C0380883C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.StaticFiles", "Microsoft.Owin.StaticFiles\Microsoft.Owin.StaticFiles.csproj", "{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}"
 EndProject
@@ -21,10 +29,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59409616-C3C9-4962-B965-2F8E107E51BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59409616-C3C9-4962-B965-2F8E107E51BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59409616-C3C9-4962-B965-2F8E107E51BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59409616-C3C9-4962-B965-2F8E107E51BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5897FAEE-8B03-405A-9661-099CBFB2A162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5897FAEE-8B03-405A-9661-099CBFB2A162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5897FAEE-8B03-405A-9661-099CBFB2A162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5897FAEE-8B03-405A-9661-099CBFB2A162}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EFF3B76F-E9E4-4DA6-B46D-E2DEA456545E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFF3B76F-E9E4-4DA6-B46D-E2DEA456545E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF3B76F-E9E4-4DA6-B46D-E2DEA456545E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF3B76F-E9E4-4DA6-B46D-E2DEA456545E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E1BFBD-2EB0-44C8-A7F7-54E4AB152C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E1BFBD-2EB0-44C8-A7F7-54E4AB152C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E1BFBD-2EB0-44C8-A7F7-54E4AB152C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E1BFBD-2EB0-44C8-A7F7-54E4AB152C13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F94CD73D-F902-4A36-BF6E-DF9233D60397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F94CD73D-F902-4A36-BF6E-DF9233D60397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F94CD73D-F902-4A36-BF6E-DF9233D60397}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +57,10 @@ Global
 		{39CECD4E-F976-4FB0-8E07-ED9C9A00B647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39CECD4E-F976-4FB0-8E07-ED9C9A00B647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39CECD4E-F976-4FB0-8E07-ED9C9A00B647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0FB0135-C123-4BF1-94DB-551C0380883C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F31A42DB-2F57-4DAC-B2BC-106F2D6F3C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
