@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles.Infrastructure;
+using LiteDB;
 
 namespace Microsoft.Owin.StaticFiles
 {
@@ -117,8 +118,9 @@ namespace Microsoft.Owin.StaticFiles
 
         public bool LookupFileInfo()
         {
+
             bool found = _options.FileSystem.TryGetFileInfo(_subPath.Value, out _fileInfo);
-            if (found)
+            if (found && _fileInfo != null)
             {
                 _length = _fileInfo.Length;
 
@@ -268,6 +270,10 @@ namespace Microsoft.Owin.StaticFiles
                 if (!string.IsNullOrEmpty(_contentType))
                 {
                     _response.ContentType = _contentType;
+                    if (_response.ContentType.Contains("video"))
+                    {
+                        Console.WriteLine("ApplyResponseHeaders video!!");
+                    }
                 }
                 _response.Headers.Set(Constants.LastModified, _lastModifiedString);
                 _response.ETag = _etagQuoted;
@@ -364,20 +370,36 @@ namespace Microsoft.Owin.StaticFiles
             {
                 Console.WriteLine("Begin send mp4 ==>" + physicalPath);
                 //physicalPath = _fileInfo.PhysicalPath.Replace(".mp4", "1.mp4");
-            }
 
-            SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
-            if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
+                SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
+                if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
+                {
+                    return sendFile(physicalPath, start, length, _request.CallCancelled);
+                }
+
+                Stream readStream = _fileInfo.CreateReadStream();
+                readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
+                var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
+                Task task = copyOperation.Start();
+                task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
+                return task;
+
+            }
+            else
             {
-                return sendFile(physicalPath, start, length, _request.CallCancelled);
-            }
+                SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
+                if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
+                {
+                    return sendFile(physicalPath, start, length, _request.CallCancelled);
+                }
 
-            Stream readStream = _fileInfo.CreateReadStream();
-            readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
-            var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
-            Task task = copyOperation.Start();
-            task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
-            return task;
+                Stream readStream = _fileInfo.CreateReadStream();
+                readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
+                var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
+                Task task = copyOperation.Start();
+                task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
+                return task;
+            }
         }
 
         // Note: This assumes ranges have been normalized to absolute byte offsets.

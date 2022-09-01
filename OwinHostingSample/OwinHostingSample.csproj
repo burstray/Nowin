@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\LiteDB\LiteDB\LiteDB.csproj">
+      <Project>{749a507a-2bcc-41bb-9aad-43882fc4cea7}</Project>
+      <Name>LiteDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.Owin.StaticFiles\Microsoft.Owin.StaticFiles.csproj">
       <Project>{f31a42db-2f57-4dac-b2bc-106f2d6f3c82}</Project>
       <Name>Microsoft.Owin.StaticFiles</Name>

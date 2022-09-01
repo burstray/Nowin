@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
 
+using LiteDB;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -87,6 +88,30 @@ namespace Microsoft.Owin.FileSystems
         /// <returns>True if a file was discovered at the given path</returns>
         public bool TryGetFileInfo(string subpath, out IFileInfo fileInfo)
         {
+            //if (subpath.ToLower().EndsWith(".mp4"))//Rayx
+            //{
+            //    using (var db = new LiteDatabase(@"I:\!GitHub\Nowin\OwinHostingSample\bin\Debug\output\LiteDB.db"))
+            //    {
+            //        // Gets a FileStorage with the default collections
+            //        var fs = db.FileStorage;
+
+            //        //// Gets a FileStorage with custom collection name
+            //        //var fs = db.GetStorage<string>("myFiles", "myChunks");
+
+            //        // Upload a file from file system
+            //        //fs.Upload("test.mp4", @"I:\!GitHub\Nowin\OwinHostingSample\bin\Debug\output\videos\IMG_4865.MP4");
+
+            //        //// Upload a file from a Stream
+            //        //fs.Upload("$/photos/2014/picture-01.jpg", "picture-01.jpg", stream);
+
+            //        // Find file reference only - returns null if not found
+            //        LiteFileInfo<string> file = fs.FindById("test.mp4");
+
+            //        fileInfo = null;
+            //    }
+            //    return true;
+            //}
+
             try
             {
                 if (subpath.StartsWith("/", StringComparison.Ordinal))

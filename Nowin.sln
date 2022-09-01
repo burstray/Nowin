@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.StaticFiles"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.StaticFiles.Tests", "Microsoft.Owin.StaticFiles.Tests\Microsoft.Owin.StaticFiles.Tests.csproj", "{473F6EEE-455F-4553-953D-5D0736D62D11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2VFS", "K2VFS\K2VFS.csproj", "{5A1054FF-2BF8-4730-995A-60628A1AA242}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiteDB", "..\LiteDB\LiteDB\LiteDB.csproj", "{749A507A-2BCC-41BB-9AAD-43882FC4CEA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{473F6EEE-455F-4553-953D-5D0736D62D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{473F6EEE-455F-4553-953D-5D0736D62D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{473F6EEE-455F-4553-953D-5D0736D62D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1054FF-2BF8-4730-995A-60628A1AA242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1054FF-2BF8-4730-995A-60628A1AA242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1054FF-2BF8-4730-995A-60628A1AA242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1054FF-2BF8-4730-995A-60628A1AA242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749A507A-2BCC-41BB-9AAD-43882FC4CEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749A507A-2BCC-41BB-9AAD-43882FC4CEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749A507A-2BCC-41BB-9AAD-43882FC4CEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749A507A-2BCC-41BB-9AAD-43882FC4CEA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
