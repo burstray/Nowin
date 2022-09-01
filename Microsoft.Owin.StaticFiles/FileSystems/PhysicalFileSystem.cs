@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
 
 using LiteDB;
+using LiteDB.Engine;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -233,6 +234,14 @@ namespace Microsoft.Owin.FileSystems
 
             public Stream CreateReadStream()
             {
+                if (PhysicalPath.ToLower().EndsWith(".mp4"))
+                {
+                    FileStreamFactory fsf = new FileStreamFactory("G:\\TestVR\\liteaes.db", "123456", true, false);
+                    return fsf.GetStream(false, true);
+                    //ab.Seek(4096 + 32, SeekOrigin.Begin);
+                    //byte[] byt = new byte[ab.Length];
+                    //ab.Read(byt, 0, byt.Length);
+                }
                 // Note: Buffer size must be greater than zero, even if the file size is zero.
                 return new FileStream(PhysicalPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 1024 * 64, FileOptions.Asynchronous | FileOptions.SequentialScan);
             }

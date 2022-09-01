@@ -366,11 +366,27 @@ namespace Microsoft.Owin.StaticFiles
 
 
             string physicalPath = _fileInfo.PhysicalPath;
-            if (physicalPath.ToLower().EndsWith(".mp4"))
-            {
-                Console.WriteLine("Begin send mp4 ==>" + physicalPath);
-                //physicalPath = _fileInfo.PhysicalPath.Replace(".mp4", "1.mp4");
+            //if (physicalPath.ToLower().EndsWith(".mp4"))
+            //{
+            //    Console.WriteLine("Begin send mp4 ==>" + physicalPath);
+            //    //physicalPath = _fileInfo.PhysicalPath.Replace(".mp4", "1.mp4");
 
+            //    SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
+            //    if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
+            //    {
+            //        return sendFile(physicalPath, start, length, _request.CallCancelled);
+            //    }
+
+            //    Stream readStream = _fileInfo.CreateReadStream();
+            //    readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
+            //    var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
+            //    Task task = copyOperation.Start();
+            //    task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
+            //    return task;
+
+            //}
+            //else
+            //{
                 SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
                 if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
                 {
@@ -383,23 +399,7 @@ namespace Microsoft.Owin.StaticFiles
                 Task task = copyOperation.Start();
                 task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
                 return task;
-
-            }
-            else
-            {
-                SendFileFunc sendFile = _response.Get<SendFileFunc>(Constants.SendFileAsyncKey);
-                if (sendFile != null && !string.IsNullOrEmpty(physicalPath))
-                {
-                    return sendFile(physicalPath, start, length, _request.CallCancelled);
-                }
-
-                Stream readStream = _fileInfo.CreateReadStream();
-                readStream.Seek(start, SeekOrigin.Begin); // TODO: What if !CanSeek?
-                var copyOperation = new StreamCopyOperation(readStream, _response.Body, length, _request.CallCancelled);
-                Task task = copyOperation.Start();
-                task.ContinueWith(resultTask => readStream.Close(), TaskContinuationOptions.ExecuteSynchronously);
-                return task;
-            }
+            //}
         }
 
         // Note: This assumes ranges have been normalized to absolute byte offsets.
